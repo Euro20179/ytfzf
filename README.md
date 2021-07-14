@@ -38,6 +38,7 @@ curl -sL "https://raw.githubusercontent.com/pystardust/ytfzf/master/ytfzf" | sud
 - [`Subscriptions`](docs/USAGE.md/#Subscriptions)
 - [`Update Log`](https://github.com/pystardust/ytfzf/releases)
 - [`Examples`](#Examples)
+- [`History`](#History)
 - [`Todo`](#Todo)
 - [`Bugs`](#Bugs)
 
@@ -78,6 +79,13 @@ curl -sL "https://raw.githubusercontent.com/pystardust/ytfzf/master/ytfzf" | sud
 first hit Q to save position and quit mpv, then choose your format using_
 
 	  ytfzf -faH
+	  
+## History
+This used to be a one line script, if you would like to use it, here it is:
+```sh
+[ -z "$*" ] || curl "https://www.youtube.com/results" -s -G --data-urlencode "search_query=$*" |  pup 'script' | grep  "^ *var ytInitialData" | sed 's/^[^=]*=//g;s/;$//' | jq '..|.videoRenderer?' | sed '/^null$/d' | jq '.title.runs[0].text,.longBylineText.runs[0].text,.shortViewCountText.simpleText,.lengthText.simpleText,.publishedTimeText.simpleText,.videoId'| sed 's/^"//;s/"$//;s/\\"//g' | sed -E -n "s/(.{60}).*/\1/;N;s/\n(.{30}).*/\n\1/;N;N;N;N;s/\n/\t|/g;p" | column -t  -s "$(printf "\t")" | fzf --delimiter='\|' --nth=1,2  | sed -E 's_.*\|([^|]*)$_https://www.youtube.com/watch?v=\1_' | xargs -r -I'{}' mpv {}
+```
+be aware that this version has no features, and `fzf` is required for the menu, `pup` must also be installed for this to work
 
 ## Todo
 

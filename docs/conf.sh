@@ -285,6 +285,10 @@ sp=""
     # listening to the video
     # search again
     # detach player
+    # selection keys...
+    # custom keys...
+#Note: there is no effective difference between selection keys and custom keys.
+#Selection keys is to clarify that keys must be defined that will select the video (eg: enter)
 #in that order, these keys can be changed
 #any keys after will not have default behaviour and the behaviour can be defined in handle_custom_key_binds
 #any undefined keys will be used for default selection behaviour

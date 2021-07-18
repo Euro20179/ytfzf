@@ -97,7 +97,7 @@ key_binds="${key_binds-alt-l,alt-t,alt-o,alt-v,alt-d,alt-m,alt-s,alt-enter,enter
 persistent_key_binds="${persistent_key_binds-enter,alt-enter,alt-v,alt-d,alt-o,double-click}"
 
 # Depreciation warning for shortcuts
-[ -n "${shortcuts+shortcuts_is_defined}" ] && printf "\033[33mWarning: shortcuts is defined, use the 'key_binds' variable instead\033[0m\n" >&2
+[ -n "${shortcuts+shortcuts_is_defined}" ] && printf "\033[31mError: shortcuts is defined, rename it to 'key_binds'.\nBe sure to add any keys for selection (eg: enter) after the predefiend keys, and before custom keys.\nOr copy the line found here https://github.com/pystardust/ytfzf/blob/60841f1f641caa9050334d3ea1ca88e9fae0e0eb/docs/conf.sh#L294\033[0m\n" >&2 && exit 3
 command -v "handle_custom_shortcuts" > /dev/null 2>&1 && printf "\033[33mWarning: handle_custom_shortcuts is not supported, rename it to handle_custom_key_binds\033[0m\n" >&2
 
 search_prompt=${search_prompt-Search: }

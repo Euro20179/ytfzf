@@ -78,7 +78,13 @@ sudo make install doc
 
 * If you wish to not install documentation (highly unrecommended) run `sudo make install` instead.
 
-* ytfzf may be in some repositories, such as the AUR, however they may or may not be up to date.
+* `ytfzf` may be in some [repositories](#Repositories).
+
+# Repositories
+
+<a href="https://repology.org/metapackage/ytfzf">
+    <img src="https://repology.org/badge/vertical-all-repos/ytfzf.svg" alt="Repo status" align="right">
+</a>
 
 ---
 
